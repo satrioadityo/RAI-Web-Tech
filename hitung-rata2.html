@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Soal Nomor 1</title>
+	</head>
+	<body onLoad="tampilanAwal();">
+		<h2>Soal Nomor 1, NIM: 1103120029 &amp; 1103120040</h2>
+		<div id="kolom">
+
+		</div>
+		<br />
+		<div>
+			<input type="button" value="tambah" onClick="tambahData();" />
+			<input type="button" value="hitung" onClick="hitung();">
+		</div>
+		<br />
+		<div id="ratarata">
+		</div>
+	</body>
+	<script>
+	var jumlah;
+	var divKolom = document.getElementById('kolom');
+	var divRataRata = document.getElementById('ratarata');
+	function tampilanAwal(){
+		jumlah = 1;
+		divKolom.innerHTML += 'Bilangan '+jumlah+' : <input type="text" id="bilangan'+jumlah+'"/><br /><br />';
+	}
+	function tambahData(){
+		jumlah++;
+		divKolom.innerHTML += 'Bilangan '+jumlah+' : <input type="text" id="bilangan'+jumlah+'"/><br /><br />';
+	}
+	function hitung(){
+		var rataRata = 0;
+		for(var i = 1; i <= jumlah; i++){
+			rataRata += parseInt(document.getElementById('bilangan'+i).value);
+		}
+		rataRata = rataRata / jumlah;		
+		divRataRata.innerHTML = "";
+		divRataRata.innerHTML += "Rata-rata : "+rataRata;
+	}
+	</script>
+</html>

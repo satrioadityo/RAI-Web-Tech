@@ -1,0 +1,96 @@
+body {
+    /* memberikan style ke body*/
+
+    /* memberi warna background abu-abu */
+    background: #515A63;
+
+    /* membuat warna font putih*/
+    color: #fff;
+
+    /* membuat font style open sans*/
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    /* membuat warna link yang ada di web page berwarna putih*/
+    color: #FFF;
+}
+
+.nav { 
+    /* menset warna navigasi menjadi hitam dengan margin 0*/
+    margin: 0;
+    background-color: #000;
+}
+
+.nav ul {
+    /* membuat list tidak ada bullet/numberingnya dan mepet ke kiri navigasi*/
+    padding: 0;
+    list-style: none;
+}
+    
+.nav ul li {
+    /* untuk membuat jarak antar menu rapi*/
+    margin: 5px -5px 5px 5px;
+
+    /* untuk membuat menu berjejer ke kanan*/
+    display:inline-block;
+
+    /* untuk memberi warna menu abu kehitaman*/
+    background-color: #282A2B;
+}
+
+.nav a {
+    /* untuk membuat link menu diperlakukan secara blok, bukan inline */
+    display:block;
+
+    /* untuk memberikan jarak agar menu terlihat rapi dengan ukuran font 20px dan lebarnya 60px */
+    padding:0 10px;
+    font-size:20px;
+    line-height: 60px;
+
+    /* untuk membuat link tidak didekorasi */
+    text-decoration:none;
+}
+
+.nav a:hover { 
+    /* untuk membuat menu ketika dihover berwarna hitam */
+    background-color: #000000; 
+}
+
+.nav ul ul {
+    /* untuk membuat list level kedua tidak terlihat sebelum dihover */
+    display: none;
+    position: absolute; 
+    top: 75px;
+}
+
+/* list level pertama */
+.nav ul li:hover > ul {
+    /* untuk membuat list level kedua muncul ketika menu dihover */
+    display:inline-block;
+}
+
+
+/* list level kedua */
+.nav ul ul li {
+    /* untuk membuat dropdown terlihat lebar */
+    width:170px;
+
+    /* untuk membuat tampilan list dropdown berjejer ke bawah*/
+    display:list-item;
+    position: relative;
+}
+
+/* list level ketiga */
+.nav ul ul ul li {
+    /* agar list tampil sejajar dengan list level kedua*/
+    top: -80px; 
+    left: 170px;
+    position: relative;
+    
+}
+
+.content{
+    /* untuk membuat tulisan di content rata tengah*/
+    text-align: center;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Kota - Provinsi
+	</title>
+</head>
+<body>
+	<h2>Tugas Javascript - 1103120029 & 1103120040</h2>
+	<select id="provinsi" onchange="showCity()">
+		<option>Pilih Provinsi</option>
+		<option>Jawa Barat</option>
+		<option>Jawa Timur</option>
+		<option>Jawa Tengah</option>
+	</select>
+
+	<select>
+		<option id="city1"></option>
+		<option id="city2"></option>
+		<option id="city3"></option>
+	</select>
+
+
+	<script type="text/javascript">
+		var jabar = ["Bandung", "Tasikmalaya", "Garut"];
+		var jatim = ["Surabaya", "Malang", "Madiun"];
+		var jateng = ["Semarang", "Surakarta", "Klaten"];
+
+		function showCity(){
+			var x = document.getElementById("provinsi");
+			var city = x.options[x.selectedIndex].text;
+			if(city == "Jawa Barat"){
+				document.getElementById("city1").text = jabar[0];
+				document.getElementById("city2").text = jabar[1];
+				document.getElementById("city3").text = jabar[2];
+			}
+			else if(city == "Jawa Timur"){
+				document.getElementById("city1").text = jatim[0];
+				document.getElementById("city2").text = jatim[1];
+				document.getElementById("city3").text = jatim[2];
+			}
+			else if(city == "Jawa Tengah"){
+				document.getElementById("city1").text = jateng[0];
+				document.getElementById("city2").text = jateng[1];
+				document.getElementById("city3").text = jateng[2];
+			}
+			else{
+				document.getElementById("city1").text = "";
+				document.getElementById("city2").text = "";
+				document.getElementById("city3").text = "";
+			}
+		}
+	</script>
+</body>
+</html>

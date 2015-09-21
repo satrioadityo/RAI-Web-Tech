@@ -1,0 +1,14 @@
+.title{
+	background-color: #000;
+	color: #fff;
+}
+
+.object{
+	background-color: #515A63;
+	color: #fff;
+	width: 30%;
+	height: auto;
+	position: absolute;
+	top: 100px;
+	left: 100px;
+}

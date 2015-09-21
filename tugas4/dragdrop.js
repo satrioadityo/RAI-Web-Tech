@@ -13,14 +13,14 @@ function whileDrag () {
 
 	// deteksi top dan left by mouse position untuk nanti diset ketika object didrop
 	document.addEventListener("dragover", function(e){
-		e = e || window.event;
-		l = e.pageX, t = e.pageY;
-	}, false);
+		l = e.pageX;
+		t = e.pageY;
+	});
 }
 
 function stopDrag () {
 	// yang terjadi ketika objek sudah didrop
 	console.log('dropped');
-	elements.style.left = l+'px';	//change 300px with l
-    elements.style.top = t+'px';	//change 300px with t
+	elements.style.left = (l-100)+'px';	//change 300px with l
+    elements.style.top = (t-50)+'px';	//change 300px with t
 }

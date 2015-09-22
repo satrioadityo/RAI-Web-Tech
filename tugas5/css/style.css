@@ -94,3 +94,58 @@ input[type='submit']:hover, .profile a input[type='button']:hover{
 	color: rgba(153, 204, 255, 1);
 	background-color: #fff;
 }
+
+.header{
+	height: 15%;
+	width: 100%;
+	background-color: #000;
+	position: fixed;
+	z-index: 2;
+}
+
+.header-title{
+	width: auto;
+	padding: 35px;
+	font-size: 1.5em;
+}
+
+.header .profile{
+	right: 10px;
+	top: 5px;
+	position: absolute;
+}
+
+.header .profile h2 a input[type='button']{
+	width: auto;
+	font-size: 1em;
+	padding: 10px;
+	margin: 0;
+	display: inline-block;
+}
+
+.crud-container{
+	border: 1px solid white;
+	margin: 150px 50px 0;
+	height: auto;
+	background-color: rgba(153, 204, 255, 0.7);
+	border-radius: 10px;
+}
+
+table, th, td{
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+
+th, td{
+	padding: 0 15px;
+}
+
+.crud-container .content table{
+	text-align: center;
+	margin: 50px auto;
+}
+
+.crud-container .content table th{
+	text-align: center;
+	padding: 0 30px;
+}

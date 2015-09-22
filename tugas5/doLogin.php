@@ -27,7 +27,7 @@
 		$_SESSION["password"] = $password;
 
 		// redirect to home.php
-		header("location: home.php");
+		header("location: crud.php");
 	}
 	else{
 		session_start();

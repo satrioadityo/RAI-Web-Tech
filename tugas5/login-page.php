@@ -9,9 +9,7 @@
 </head>
 <body>
 
-<?php
-	print_r($_SESSION);
-?>
+
 	<div class="main">
 		<div class="title">
 			Login
@@ -23,6 +21,11 @@
 			<input type="submit" value="login">
 			</form>
 		</div>
+		<?php 
+			if(isset($_SESSION['loginMessage'])){
+				echo $_SESSION['loginMessage'];
+			}
+		?>
 	</div>
 </body>
 </html>

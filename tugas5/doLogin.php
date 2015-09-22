@@ -30,7 +30,9 @@
 		header("location: home.php");
 	}
 	else{
-		echo "Invalid username or password";
+		session_start();
+		$_SESSION['loginMessage'] = "Invalid username or password, please try again !";
+		// echo "Invalid username or password";
 		header("location: login-page.php");
 	}
 

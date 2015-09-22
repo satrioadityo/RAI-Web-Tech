@@ -72,7 +72,7 @@ body{
 	margin-bottom: 10px;
 }
 
-input[type='submit']{
+input[type='submit'], .profile a input[type='button']{
 	color: #fff;
 	background-color: rgba(153, 204, 255, 1);
 	width: 100%;
@@ -85,7 +85,12 @@ input[type='submit']{
 	padding: 5px;
 }
 
-input[type='submit']:hover{
+.profile a input[type='button']{
+	width: 10%;
+	border-radius: 5px;
+}
+
+input[type='submit']:hover, .profile a input[type='button']:hover{
 	color: rgba(153, 204, 255, 1);
 	background-color: #fff;
 }

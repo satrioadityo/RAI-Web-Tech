@@ -20,10 +20,16 @@
 	$res = mysql_query($sql);
 
 	if($res){
-		echo "Your registration is success!";
+		session_start();
+		$_SESSION['registerMessage'] = "Your registration is success! Please Login.";
+		header("location: home.php");
+		// echo "Your registration is success!";
 	}
 	else{
-		echo "Failed to register";
+		session_start();
+		$_SESSION['registerMessage'] = "Failed to register";
+		header("location: home.php");
+		// echo "Failed to register";
 	}
 
 ?>

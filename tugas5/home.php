@@ -31,13 +31,20 @@
 				Register
 			</div>
 		</a>
+		<?php 
+			if(isset($_SESSION['registerMessage'])){
+				echo $_SESSION['registerMessage'];
+			}
+		?>
 		<?php else : ?>
 		<div class="profile">
-			<h2>Hello, <?php echo $_SESSION['username']; ?></h2>
-			<a href="doLogout.php">Logout</a>
+			<h2>Hello, <?php echo $_SESSION['username']; ?> !</h2>
+			<a href="doLogout.php"><input type="button" value="LOGOUT"></a>
 		</div>
 		
 		<?php endif;?>
+
+		
 		<!-- if logged in show the data -->
 		<!-- bla bla bla -->
 	</div>

@@ -1,15 +1,23 @@
+<?php
+	session_start();
+?>
+
 <html>
 <head>
 	<title>LOGIN CRUD PHP</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+
+<?php
+	print_r($_SESSION);
+?>
 	<div class="main">
 		<div class="title">
 			Login
 		</div>
 		<div class="login-form-container">
-			<form action="" method="POST">
+			<form action="doLogin.php" method="POST">
 			<div class="label-form">Username</div><input type="text" name="username">
 			<div class="label-form">Password</div><input type="password" name="password">
 			<input type="submit" value="login">

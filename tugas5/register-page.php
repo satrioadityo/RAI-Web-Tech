@@ -9,7 +9,7 @@
 			Register
 		</div>
 		<div class="login-form-container">
-			<form action="" method="POST">
+			<form action="doRegister.php" method="POST">
 			<div class="label-form">Username</div><input type="text" name="username">
 			<div class="label-form">Password</div><input type="password" name="password">
 			<input type="submit" value="register">

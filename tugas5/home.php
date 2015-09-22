@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <html>
 <head>
 	<title>HOME CRUD PHP</title>
@@ -8,7 +12,6 @@
 		<div class="title">
 			CRUD PHP
 		</div>
-
 		<!-- if not logged in -->
 		<a href="login-page.php">
 			<div class="login-option">
@@ -20,7 +23,7 @@
 				Register
 			</div>
 		</a>
-
+		<a href="doLogout.php">Logout</a>
 		<!-- if logged in show the data -->
 		<!-- bla bla bla -->
 	</div>

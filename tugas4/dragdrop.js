@@ -21,6 +21,6 @@ function whileDrag () {
 function stopDrag () {
 	// yang terjadi ketika objek sudah didrop
 	console.log('dropped');
-	elements.style.left = (l-100)+'px';	//change 300px with l
-    elements.style.top = (t-50)+'px';	//change 300px with t
+	elements.style.left = (l-100)+'px';	// set jarak dari kiri
+    elements.style.top = (t-50)+'px';	// set jarak dari atas
 }

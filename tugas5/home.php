@@ -1,5 +1,12 @@
 <?php
 	session_start();
+
+	if(isset($_SESSION['username'])){
+		$loggedIn = true;
+	}
+	else{
+		$loggedIn = false;
+	}
 ?>
 
 <html>
@@ -13,6 +20,7 @@
 			CRUD PHP
 		</div>
 		<!-- if not logged in -->
+		<?php if(!$loggedIn) : ?>
 		<a href="login-page.php">
 			<div class="login-option">
 				Login
@@ -23,7 +31,13 @@
 				Register
 			</div>
 		</a>
-		<a href="doLogout.php">Logout</a>
+		<?php else : ?>
+		<div class="profile">
+			<h2>Hello, <?php echo $_SESSION['username']; ?></h2>
+			<a href="doLogout.php">Logout</a>
+		</div>
+		
+		<?php endif;?>
 		<!-- if logged in show the data -->
 		<!-- bla bla bla -->
 	</div>

@@ -13,21 +13,22 @@
 	// end of connection
 
 	// get value from form
-	$username = $_POST['username'];
-	$password = $_POST['password'];
+	$judul = $_POST['judul'];
+	$pengarang = $_POST['pengarang'];
+	$penerbit = $_POST['penerbit'];
 
-	$sql = "insert into users values (null, '".$username."', '".$password."')";
+	$sql = "insert into buku values (null, '".$judul."', '".$pengarang."', '".$penerbit."')";
 	$res = mysql_query($sql);
 
 	if($res){
 		session_start();
-		$_SESSION['registerMessage'] = "Your registration is success! Please Login.";
-		header("location: home.php");
+		$_SESSION['insertMessage'] = "Input data success";
+		header("location: crud.php");
 	}
 	else{
 		session_start();
-		$_SESSION['registerMessage'] = "Failed to register";
-		header("location: home.php");
+		$_SESSION['insertMessage'] = "Failed to input";
+		header("location: crud.php");
 	}
 
 ?>

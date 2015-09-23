@@ -38,44 +38,27 @@
 			mysql_select_db("$db") or die("failed to select database");
 			// end of connection
 
-			$sql = "select * from buku";
+			$sql = "select * from buku where id = '".$_GET['id']."'";
 			$res = mysql_query($sql);
+			$row = mysql_fetch_array($res);
+
+			$judul = $row['judul'];
+			$pengarang = $row['pengarang'];
+			$penerbit = $row['penerbit'];
 		?>
 
 		<div class="crud-container">
-			<!-- select all book, show in table -->
-			<div class="insert-new">
-				<a href="insert.php"><input type="button" value="INSERT BUKU"></a>
-				<?php 
-					if(isset($_SESSION['insertMessage'])){
-						echo $_SESSION['insertMessage'];
-					}
-				?>
+			<!-- tampilkan form -->
+			<div class="container">
+				<form action="doUpdate.php" method="POST">
+					<input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
+					<div class="label-form">Judul</div><input type="text" name="judul" value="<?php echo $judul; ?>">
+					<div class="label-form">Pengarang</div><input type="text" name="pengarang" value="<?php echo $pengarang; ?>">
+					<div class="label-form">Penerbit</div><input type="text" name="penerbit" value="<?php echo $penerbit; ?>">
+					<input type="submit" value="update">
+				</form>	
 			</div>
-			<div class="content">
-				<table>
-					<th>No.</th>
-					<th>Judul</th>
-					<th>Pengarang</th>
-					<th>Penerbit</th>
-					<th>Aksi</th>
-					<?php 
-						if(mysql_num_rows($res) > 0){
-							$no = 1;
-							while ($row = mysql_fetch_assoc($res)) {
-								echo "<tr>".
-								"<td>".$no."</td>".
-								"<td>".$row['judul']."</td>".
-								"<td>".$row['pengarang']."</td>".
-								"<td>".$row['penerbit']."</td>".
-								"<td><a href='update.php?id=".$row['id']."'>Edit</a> <a href='doDelete.php?id=".$row['id']."'>Hapus</a></td>".
-								"</tr>";
-								$no++;
-							}
-						}
-					?>
-				</table>
-			</div>
+			
 		</div>
 	</div>
 </body>

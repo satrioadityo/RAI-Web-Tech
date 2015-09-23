@@ -12,22 +12,18 @@
 
 	// end of connection
 
-	// get value from form
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-
-	$sql = "insert into users values (null, '".$username."', '".$password."')";
+	$sql = "delete from buku where id = '".$_GET['id']."'";
 	$res = mysql_query($sql);
 
 	if($res){
 		session_start();
-		$_SESSION['registerMessage'] = "Your registration is success! Please Login.";
-		header("location: home.php");
+		$_SESSION['insertMessage'] = "Delete data success";
+		header("location: crud.php");
 	}
 	else{
 		session_start();
-		$_SESSION['registerMessage'] = "Failed to register";
-		header("location: home.php");
+		$_SESSION['insertMessage'] = "Failed to Delete";
+		header("location: crud.php");
 	}
 
 ?>

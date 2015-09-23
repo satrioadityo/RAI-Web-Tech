@@ -1,4 +1,4 @@
-<?php  
+<?php
 	
 	// connection attribute to db
 	$host = "localhost";
@@ -13,21 +13,24 @@
 	// end of connection
 
 	// get value from form
-	$username = $_POST['username'];
-	$password = $_POST['password'];
+	$judul = $_POST['judul'];
+	$pengarang = $_POST['pengarang'];
+	$penerbit = $_POST['penerbit'];
 
-	$sql = "insert into users values (null, '".$username."', '".$password."')";
+	$sql = "update buku set judul='".$judul."', pengarang='".$pengarang."', penerbit='".$penerbit."' where id='".$_POST['id']."'  ";
 	$res = mysql_query($sql);
+
+	echo $res;
 
 	if($res){
 		session_start();
-		$_SESSION['registerMessage'] = "Your registration is success! Please Login.";
-		header("location: home.php");
+		$_SESSION['insertMessage'] = "Update data success";
+		header("location: crud.php");
 	}
 	else{
 		session_start();
-		$_SESSION['registerMessage'] = "Failed to register";
-		header("location: home.php");
+		$_SESSION['insertMessage'] = "Failed to update";
+		header("location: crud.php");
 	}
 
 ?>

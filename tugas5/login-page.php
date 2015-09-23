@@ -1,5 +1,13 @@
 <?php
 	session_start();
+
+	if(isset($_SESSION['username'])){
+		$loggedIn = true;
+		header("location: crud.php");
+	}
+	else{
+		$loggedIn = false;
+	}
 ?>
 
 <html>

@@ -22,12 +22,12 @@
 	if($res){
 		session_start();
 		$_SESSION['registerMessage'] = "Your registration is success! Please Login.";
-		header("location: home.php");
+		header("location: index.php");
 	}
 	else{
 		session_start();
 		$_SESSION['registerMessage'] = "Failed to register";
-		header("location: home.php");
+		header("location: index.php");
 	}
 
 ?>

@@ -26,7 +26,7 @@
 		$_SESSION["username"] = $username;
 		$_SESSION["password"] = $password;
 
-		// redirect to home.php
+		// redirect to crud.php
 		header("location: crud.php");
 	}
 	else{

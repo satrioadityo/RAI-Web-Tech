@@ -5,7 +5,9 @@
 		$loggedIn = true;
 	}
 	else{
+		// jika user belum login, harus login dulu
 		$loggedIn = false;
+		// redirect ke page login
 		header("location: login-page.php");
 	}
 ?>
@@ -17,6 +19,7 @@
 </head>
 <body>
 	<div class="main">
+		<!-- membuat header -->
 		<div class="header">
 			<div class="header-title">
 				CRUD PHP	
@@ -26,7 +29,7 @@
 			</div>
 		</div>
 		<div class="crud-container">
-			<!-- tampilkan form -->
+			<!-- tampilkan form untuk disimpan datanya -->
 			<div class="container">
 				<form action="doInsert.php" method="POST">
 					<div class="label-form">Judul</div><input type="text" name="judul">

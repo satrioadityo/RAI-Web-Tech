@@ -17,11 +17,13 @@
 	$pengarang = $_POST['pengarang'];
 	$penerbit = $_POST['penerbit'];
 
+	// query untuk memasukkan data buku
 	$sql = "insert into buku values (null, '".$judul."', '".$pengarang."', '".$penerbit."')";
 	$res = mysql_query($sql);
 
 	if($res){
 		session_start();
+		// pesan yang ditampilkan jika insert data buku berhasil
 		$_SESSION['insertMessage'] = "Input data success";
 		header("location: crud.php");
 	}

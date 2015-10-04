@@ -20,9 +20,11 @@
 	$sql = "select username, password from users where username='".$username."' and password='".$password."' limit 1";
 	$result = mysql_query($sql);
 
+	// jika user ada
 	if(mysql_num_rows($result) == 1){
 		// make session
 		session_start();
+		// tambahkan key ke session
 		$_SESSION["username"] = $username;
 		$_SESSION["password"] = $password;
 
@@ -31,8 +33,8 @@
 	}
 	else{
 		session_start();
+		// pesan yang akan ditampilkan jika login gagal atau akun salah
 		$_SESSION['loginMessage'] = "Invalid username or password, please try again !";
-		// echo "Invalid username or password";
 		header("location: login-page.php");
 	}
 

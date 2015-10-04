@@ -17,6 +17,7 @@
 	$pengarang = $_POST['pengarang'];
 	$penerbit = $_POST['penerbit'];
 
+	// query untuk mengupdate data buku
 	$sql = "update buku set judul='".$judul."', pengarang='".$pengarang."', penerbit='".$penerbit."' where id='".$_POST['id']."'  ";
 	$res = mysql_query($sql);
 
@@ -24,6 +25,7 @@
 
 	if($res){
 		session_start();
+		// pesan yang akan ditampilkan ketika update berhasil
 		$_SESSION['insertMessage'] = "Update data success";
 		header("location: crud.php");
 	}

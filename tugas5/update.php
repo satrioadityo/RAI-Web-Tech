@@ -5,6 +5,7 @@
 		$loggedIn = true;
 	}
 	else{
+		// jika user belum login, redirect ke login page
 		$loggedIn = false;
 		header("location: login-page.php");
 	}
@@ -38,17 +39,19 @@
 			mysql_select_db("$db") or die("failed to select database");
 			// end of connection
 
+			// query untuk memilih satu data buku yang akan diupdate
 			$sql = "select * from buku where id = '".$_GET['id']."'";
 			$res = mysql_query($sql);
 			$row = mysql_fetch_array($res);
 
+			// set variable penampung untuk dimuat dalam form update
 			$judul = $row['judul'];
 			$pengarang = $row['pengarang'];
 			$penerbit = $row['penerbit'];
 		?>
 
 		<div class="crud-container">
-			<!-- tampilkan form -->
+			<!-- tampilkan form update -->
 			<div class="container">
 				<form action="doUpdate.php" method="POST">
 					<input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">

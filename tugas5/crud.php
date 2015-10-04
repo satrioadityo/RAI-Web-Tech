@@ -1,7 +1,8 @@
 <?php
 	session_start();
-
+	// jika sudah login, session username sudah diset
 	if(isset($_SESSION['username'])){
+		// penanda saja bahwa user sudah login
 		$loggedIn = true;
 	}
 	else{
@@ -17,6 +18,7 @@
 </head>
 <body>
 	<div class="main">
+		<!-- membuat header -->
 		<div class="header">
 			<div class="header-title">
 				CRUD PHP	
@@ -26,6 +28,7 @@
 			</div>
 		</div>
 
+		<!-- membuat koneksi ke database rai_crud untuk menampilkan data buku-->
 		<?php
 			// connection attribute to db
 			$host = "localhost";
@@ -47,11 +50,13 @@
 			<div class="insert-new">
 				<a href="insert.php"><input type="button" value="INSERT BUKU"></a>
 				<?php 
+					// pesan yang akan ditampilkan setelah insert data buku
 					if(isset($_SESSION['insertMessage'])){
 						echo $_SESSION['insertMessage'];
 					}
 				?>
 			</div>
+			<!-- menampilkan data buku dalam tabel -->
 			<div class="content">
 				<table>
 					<th>No.</th>

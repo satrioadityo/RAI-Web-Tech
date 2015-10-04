@@ -16,11 +16,13 @@
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 
+	// query untuk meregister user
 	$sql = "insert into users values (null, '".$username."', '".$password."')";
 	$res = mysql_query($sql);
 
 	if($res){
 		session_start();
+		// pesan yang akan ditampilkan jika register berhasil
 		$_SESSION['registerMessage'] = "Your registration is success! Please Login.";
 		header("location: index.php");
 	}

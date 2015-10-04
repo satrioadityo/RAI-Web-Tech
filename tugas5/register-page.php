@@ -1,8 +1,9 @@
 <?php
 	session_start();
-
+	// jika user sudah login
 	if(isset($_SESSION['username'])){
 		$loggedIn = true;
+		// redirect ke page crud
 		header("location: crud.php");
 	}
 	else{
@@ -20,6 +21,7 @@
 		<div class="title">
 			Register
 		</div>
+		<!-- menampilkan form register -->
 		<div class="login-form-container">
 			<form action="doRegister.php" method="POST">
 			<div class="label-form">Username</div><input type="text" name="username">

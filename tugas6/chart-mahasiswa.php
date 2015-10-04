@@ -7,8 +7,7 @@
 		<title>Chart Mahasiswa</title>
 
 		<!-- Bootstrap CSS -->
-		<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-		<script type="text/javascript" src="Chart.js"></script>
+		<link href="bootstrap.min.css" rel="stylesheet">
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -53,8 +52,6 @@
 					// jumlah data setiap angkatan sudah dapat
 				}
 			}
-
-			
 		?>
 
 		<div class="container">
@@ -73,46 +70,95 @@
 					<div id="chartContainer" style="height: 400px;"></div>
 				</div>
 			</div>
+
+			<!-- view data table -->
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="view">
+						<!-- table data -->
+						<table class="table table-striped table-hover">
+							<thead>
+								<tr>
+									<th>No.</th>
+									<th>Nama</th>
+									<th>Jenis Kelamin</th>
+									<th>Angkatan</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+									// untuk membuat koneksi ke db
+									include("koneksi.php");
+									
+									// select distinct angkatan diurutkan, untuk memberi label pada chart
+									$data = "SELECT * FROM mahasiswa";
+									$res = mysql_query($data);
+									if(mysql_num_rows($res) > 0){
+										$no = 1;
+										while ($row = mysql_fetch_assoc($res)) {
+											echo "<tr>".
+													"<td>".$no++."</td>".
+													"<td>".$row['nama']."</td>".
+													"<td>".$row['jenis_kelamin']."</td>".
+													"<td>".$row['angkatan']."</td>".
+												 "</tr>";
+										}
+									}	
+									else{
+										echo "no result";
+									}
+								 ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<script type="text/javascript">
+			// untuk menampilkan resume data mahasiswa dalam bentuk bar chart
 			window.onload = function () {
 			  var chart = new CanvasJS.Chart("chartContainer", {
 			    title: {
-			      text: ""
+			    	// set title null, karna sudah ada header
+			    	text: ""
 			    },
 			    axisY: {
-			      title: "Jumlah"
+			    	// judul untuk sumbu Y
+			    	title: "Jumlah"
 			    },
 			    axisX: {
-			      title: "Angkatan"
+			    	// judul untuk sumbu X
+			    	title: "Angkatan"
 			    },
 			    data: [
 				    {
-				      type: "column",
-				      toolTipContent: "<a href = {name}> {label}</a><hr/>Jumlah mahasiswa: {y}",                
+				    	type: "column",
+				    	// isikan link ke tooltip
+				    	toolTipContent: "<a href = {name}> {label}</a><hr/>Jumlah mahasiswa: {y}",                
 
-				      dataPoints: [
-			      		<?php 
-			      			for ($i = 0; $i < count($labelChart); $i++) {
-			      				echo "{ y : ".$nData[$i].", label : ".$labelChart[$i].", name: \"detail-mahasiswa.php?angkatan=".$labelChart[$i]."\" },";
-			      			};
+				    	// data untuk chart
+				    	dataPoints: [
+				      		<?php
+				      			for ($i = 0; $i < count($labelChart); $i++) {
+				      				echo "{ y : ".$nData[$i].", label : ".$labelChart[$i].", name: \"detail-mahasiswa.php?angkatan=".$labelChart[$i]."\" },";
+				      			};
 
-			      		 ?>
-						// {  y: 84, label: "home", name: "/" }, ...
-				      ]
+				      		?>
+				    	]
 				    } 	
 			    ]
 			  });
 
+			  // menampilkan chart
 			  chart.render();
 			}
 		</script>
 		<script type="text/javascript" src="canvasjs.js"></script>
 
 		<!-- jQuery -->
-		<script src="//code.jquery.com/jquery.js"></script>
+		<script src="jquery.js"></script>
 		<!-- Bootstrap JavaScript -->
-		<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="bootstrap.min.js"></script>
 	</body>
 </html>

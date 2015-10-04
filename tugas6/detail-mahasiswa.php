@@ -7,8 +7,7 @@
 		<title>Chart Mahasiswa</title>
 
 		<!-- Bootstrap CSS -->
-		<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-		<script type="text/javascript" src="Chart.js"></script>
+		<link href="bootstrap.min.css" rel="stylesheet">
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,18 +22,9 @@
 			// untuk membuat koneksi ke db
 			include("koneksi.php");
 			
-			// select distinct angkatan diurutkan, untuk memberi label pada chart
-			$labels = "SELECT * FROM mahasiswa WHERE angkatan = '".$_GET['angkatan']."'";
-			$res = mysql_query($labels);
-
-			// if(mysql_num_rows($res) > 0){
-			// 	while ($row = mysql_fetch_assoc($res)) {
-			// 		echo $row['nama']." ".$row['jenis_kelamin']." ".$row['angkatan'];
-			// 	}
-			// }	
-			// else{
-			// 	echo "no result";
-			// }		
+			// query untuk menampilkan data berdasarkan angkatan
+			$data = "SELECT * FROM mahasiswa WHERE angkatan = '".$_GET['angkatan']."'";
+			$res = mysql_query($data);		
 		?>
 
 		<div class="container">
@@ -63,6 +53,7 @@
 							</thead>
 							<tbody>
 								<?php 
+									// menampilkan detail data mahasiswa untuk angkatan yang dipilih
 									if(mysql_num_rows($res) > 0){
 										$no = 1;
 										while ($row = mysql_fetch_assoc($res)) {
@@ -86,8 +77,8 @@
 		</div>
 
 		<!-- jQuery -->
-		<script src="//code.jquery.com/jquery.js"></script>
+		<script src="jquery.js"></script>
 		<!-- Bootstrap JavaScript -->
-		<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="bootstrap.min.js"></script>
 	</body>
 </html>

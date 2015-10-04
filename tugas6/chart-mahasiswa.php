@@ -73,36 +73,6 @@
 					<div id="chartContainer" style="height: 400px;"></div>
 				</div>
 			</div>
-
-			
-
-
-			<!-- view data table -->
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<div class="view">
-						<!-- table data -->
-						<table class="table table-striped table-hover">
-							<thead>
-								<tr>
-									<th>No.</th>
-									<th>Nama</th>
-									<th>Jenis Kelamin</th>
-									<th>Angkatan</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1</td>
-									<td>Test</td>
-									<td>Test</td>
-									<td>Test</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
 		</div>
 
 		<script type="text/javascript">
@@ -125,13 +95,13 @@
 				      dataPoints: [
 			      		<?php 
 			      			for ($i = 0; $i < count($labelChart); $i++) {
-			      				echo "{ y : ".$nData[$i].", label : ".$labelChart[$i].", name: \"/link\" },";
+			      				echo "{ y : ".$nData[$i].", label : ".$labelChart[$i].", name: \"detail-mahasiswa.php?angkatan=".$labelChart[$i]."\" },";
 			      			};
 
 			      		 ?>
 						// {  y: 84, label: "home", name: "/" }, ...
 				      ]
-				    } 
+				    } 	
 			    ]
 			  });
 

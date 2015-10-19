@@ -22,7 +22,7 @@
 			// untuk membuat koneksi ke db
 			include("koneksi.php");
 			
-			// query untuk menampilkan data berdasarkan angkatan
+			// query untuk menampilkan seluruh data mahasiswa
 			$data = "SELECT * FROM mahasiswa";
 			$res = mysql_query($data);		
 		?>
@@ -32,11 +32,12 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<div class="title">
-						<h1 class="text-center">Detail Data Mahasiswa</h1>
+						<h1 class="text-center">AJAX INSERT Data Mahasiswa</h1>
 					</div>
 				</div>
 			</div>
 
+			<!-- form dalam modal untuk mendapatkan input user -->
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<a class="btn btn-primary" data-toggle="modal" href='#modal-id'>TAMBAH MAHASISWA</a>
@@ -48,7 +49,7 @@
 									<h4 class="modal-title">TAMBAH DATA MAHASISWA</h4>
 								</div>
 								<div class="modal-body">
-									<form action="simpan.php" method="POST" role="form" id="formMahasiswa">
+									<form action="" method="POST" id="formMahasiswa">
 										<div class="form-group">
 											<label for="Nama">Nama</label>
 											<input type="text" class="form-control" id="nama" name="nama" placeholder="Input Nama">
@@ -65,7 +66,7 @@
 											<input type="text" class="form-control" id="angkatan" name="angkatan" placeholder="Input Angkatan">
 										</div>
 
-										<button type="submit" class="btn btn-primary">SIMPAN</button>
+										<button type="submit" class="btn btn-primary" id="buttonSimpan">SIMPAN</button>
 									</form>
 								</div>
 							</div>
@@ -74,12 +75,12 @@
 				</div>
 			</div>
 
-			<!-- view data table -->
+			<!-- view data mahasiswa dalam table -->
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<div class="view">
 						<!-- table data -->
-						<table class="table table-striped table-hover">
+						<table class="table table-striped table-hover" id="table">
 							<thead>
 								<tr>
 									<th>No.</th>
@@ -117,5 +118,59 @@
 		<script src="jquery.js"></script>
 		<!-- Bootstrap JavaScript -->
 		<script src="bootstrap.min.js"></script>
+
+		<!-- jquery function -->
+		<script type="text/javascript">
+			$('#formMahasiswa').submit(function(event) {
+				/* disable normal submit */
+				return false;
+			});
+
+			// submit dengan jquery and ajax
+			$('#buttonSimpan').on('click', function(event) {
+				event.preventDefault();
+				// pakai ajax untuk mengirim input user
+				$.ajax({
+					url: 'simpan.php',
+					type: 'POST',
+					cache: false,
+					data: {nm: nama.value, jnsklmn : $('#inputJenisKelamin').val(), angktn : angkatan.value}
+				})
+				.done(function() {
+					console.log("success");
+				})
+				.fail(function() {
+					alert("error inserting");
+				})
+				.success((function(){
+					// kalau sudah berhasil insert, modal ditutup
+					$('#modal-id').modal('hide');
+
+					// reload table
+					$.ajax({
+						url: 'loadTable.php',
+						success: (function(data){
+							// json yang dikirim dari loadTable.php akan diparsing dulu
+							var obj = $.parseJSON(data);
+
+							// setelah diparsing data ditambahkan ke table
+							var x = document.getElementById('table').rows.length;
+						    var row = "<tr><td>"+x+"</td><td>"+obj.nama+"</td><td>"+obj.jenis_kelamin+"</td><td>"+obj.angkatan+"</td></tr>";
+						    $('#table > tbody').append(row);
+						})
+					})
+					.done(function() {
+						console.log("success");
+					})
+					.fail(function() {
+						console.log("error coeg");
+					})
+					.always(function() {
+						console.log("complete");
+					});
+				}));
+				
+			});
+		</script>
 	</body>
 </html>
